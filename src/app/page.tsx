@@ -43,8 +43,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
       
-      {/* --- HEADER --- */}
-            {/* --- HEADER з прозорим градієнтом --- */}
       <header className="absolute top-0 left-0 w-full z-50 bg-gradient-to-b from-black/80 via-black/40 to-transparent pt-4 pb-6">
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex flex-col">
@@ -67,9 +65,12 @@ export default function Home() {
       {/* --- 1. HERO SECTION --- */}
       <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center bg-zinc-900 overflow-hidden">
         {/* Фоновий ефект (імітація фото цеху) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
-        <div className="absolute inset-0 bg-[url('/placeholder-hero.jpg')] bg-cover bg-center opacity-40" style={{backgroundImage: 'linear-gradient(to right, black 30%, transparent), url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2070&auto=format&fit=crop")'}}></div>
-        
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div> */}
+        {/* <div className="absolute inset-0 bg-[url('/placeholder-hero.jpg')] bg-cover bg-center opacity-40" style={{backgroundImage: 'linear-gradient(to right, black 30%, transparent), url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2070&auto=format&fit=crop")'}}></div> */}
+        <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover opacity-30 z-0">
+          <source src="/herovideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="container mx-auto px-6 relative z-20">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4 text-white">
