@@ -1,0 +1,38 @@
+import Link from "next/link";
+
+export const Header = () => {
+  return (
+    <header className="fixed top-0 rop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] left-0 w-full z-50 bg-gradient-to-b from-black/80 via-black/40 to-transparent pt-4 pb-6">
+      <div className="container  mx-auto px-6 flex justify-between items-center">
+        <div className="flex flex-col">
+          <span className="text-2xl font-bold tracking-widest uppercase text-white drop-shadow-md">
+            ART <span className="text-zinc-400">LINE</span>
+          </span>
+          <span className="text-[10px] tracking-widest uppercase text-zinc-400 -mt-1 drop-shadow-sm">
+            Design
+          </span>
+        </div>
+        <nav className="hidden drop-shadow-lg rop-shadow-black md:flex items-center space-x-8 text-sm uppercase tracking-wide text-zinc-200">
+          <Link href="#" className="hover:text-lime-400 transition">
+            Послуги
+          </Link>
+          <Link href="#about" className="hover:text-lime-400 transition">
+            Про нас
+          </Link>
+          <Link href="#portfolio" className="hover:text-lime-400 transition">
+            Проєкти
+          </Link>
+          <Link href="#clients" className="hover:text-lime-400 transition">
+            Клієнти
+          </Link>
+          <Link href="#contacts" className="hover:text-lime-400 transition">
+            Контакти
+          </Link>
+        </nav>
+        <button className="bg-lime-400 text-black font-semibold px-6 py-2 rounded hover:bg-lime-500 transition text-sm uppercase shadow-lg">
+          Увійти
+        </button>
+      </div>
+    </header>
+  );
+};

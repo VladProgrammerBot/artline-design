@@ -57,12 +57,12 @@ body {
 .typing-second {
   width: 0;
   border-right: 3px solid #a3e635;
-  animation: typing-second 1.8s steps(20) forwards 2s, blink 0.8s step-end infinite 2s;
+  animation: typing-second 1.5s steps(20) forwards 2s, blink 0.8s step-end infinite 2s;
 }
 
 @keyframes typing-second {
   0% { width: 0; }
-  100% { width: 100%; }
+  100% { width: 80%; }
 }
 
 @keyframes blink {

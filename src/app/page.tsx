@@ -62,84 +62,51 @@ const clients = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-100">
-      <header className="absolute top-0 left-0 w-full z-50 bg-gradient-to-b from-black/80 via-black/40 to-transparent pt-4 pb-6">
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="flex flex-col">
-            <span className="text-2xl font-bold tracking-widest uppercase text-white drop-shadow-md">
-              ART <span className="text-zinc-400">LINE</span>
-            </span>
-            <span className="text-[10px] tracking-widest uppercase text-zinc-400 -mt-1 drop-shadow-sm">
-              Design
-            </span>
+      <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center bg-zinc-900 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
+        >
+          <source src="/herovideo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10"></div>
+
+        {/* Контент зліва */}
+        <div className="container mx-auto px-6 relative z-20">
+          <div className="max-w-3xl">
+            {/* Заголовок з CSS-анімацією друку (без JS) */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading- mb-4 text-white drop-shadow-lg">
+              <span className="text-lime-400 inline-block overflow-hidden whitespace-nowrap typing-first">
+                РЕКЛАМНІ РІШЕННЯ
+              </span>
+              <br />
+              <span className="text-white inline-block overflow-hidden whitespace-nowrap typing-second">
+                ЩО ПРАЦЮЮТЬ
+              </span>
+            </h1>
+
+            {/* Опис – видимий одразу */}
+            <p className="text-lg md:text-xl text-zinc-200 mb-8 max-w-xl drop-shadow-md">
+              Дійсний друк, брендування та виготовлення реклами будь-якої
+              складності.
+            </p>
+
+            {/* Кнопки – видимі одразу */}
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-lime-400 text-black font-bold px-8 py-3 rounded hover:bg-lime-500 transition uppercase">
+                Наші послуги
+              </button>
+              <button className="bg-transparent border border-white/30 text-white px-8 py-3 rounded hover:bg-white/10 transition uppercase">
+                Переглянути проєкти
+              </button>
+            </div>
           </div>
-          <nav className="hidden md:flex items-center space-x-8 text-sm uppercase tracking-wide text-zinc-200 drop-shadow-md">
-            <Link href="#" className="hover:text-lime-400 transition">
-              Послуги
-            </Link>
-            <Link href="#about" className="hover:text-lime-400 transition">
-              Про нас
-            </Link>
-            <Link href="#portfolio" className="hover:text-lime-400 transition">
-              Проєкти
-            </Link>
-            <Link href="#clients" className="hover:text-lime-400 transition">
-              Клієнти
-            </Link>
-            <Link href="#contacts" className="hover:text-lime-400 transition">
-              Контакти
-            </Link>
-          </nav>
-          <button className="bg-lime-400 text-black font-semibold px-6 py-2 rounded hover:bg-lime-500 transition text-sm uppercase shadow-lg">
-            Увійти
-          </button>
         </div>
-      </header>
-
-      {/* --- 1. HERO SECTION (Центрований з CSS-анімацією друку) --- */}
-      {/* --- 1. HERO SECTION --- */}
-      {/* --- 1. HERO SECTION --- */}
-<section className="relative pt-32 pb-20 min-h-[90vh] flex items-center bg-zinc-900 overflow-hidden">
-  
-  <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover opacity-80 z-0">
-    <source src="/herovideo.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10"></div>
-
-  {/* Контент зліва */}
-  <div className="container mx-auto px-6 relative z-20">
-    <div className="max-w-3xl">
-      
-      {/* Заголовок з CSS-анімацією друку (без JS) */}
-      <h1 className="text-5xl md:text-7xl font-bold leading- mb-4 text-white drop-shadow-lg">
-        <span className="text-lime-400 inline-block overflow-hidden whitespace-nowrap typing-first">
-          РЕКЛАМНІ РІШЕННЯ
-        </span>
-        <br />
-        <span className="text-white inline-block overflow-hidden whitespace-nowrap typing-second">
-          ЩО ПРАЦЮЮТЬ
-        </span>
-      </h1>
-
-      {/* Опис – видимий одразу */}
-      <p className="text-lg md:text-xl text-zinc-200 mb-8 max-w-xl drop-shadow-md">
-        Дійсний друк, брендування та виготовлення реклами будь-якої складності.
-      </p>
-
-      {/* Кнопки – видимі одразу */}
-      <div className="flex flex-wrap gap-4">
-        <button className="bg-lime-400 text-black font-bold px-8 py-3 rounded hover:bg-lime-500 transition uppercase">
-          Наші послуги
-        </button>
-        <button className="bg-transparent border border-white/30 text-white px-8 py-3 rounded hover:bg-white/10 transition uppercase">
-          Переглянути проєкти
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* --- 2. SERVICES GRID --- */}
       {/* --- 2. SERVICES GRID --- */}
@@ -451,81 +418,34 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Анімація для безперервного руху слайдера
-<style jsx>{`
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
-  }
-  .animate-marquee:hover {
-    animation-play-state: paused;
-  }
-`}</style> */}
-
-      {/* --- 7. FOOTER & CONTACTS --- */}
-      <footer
-        id="contacts"
-        className="bg-zinc-950 text-zinc-300 py-16 border-t border-zinc-800"
-      >
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <span className="text-2xl font-bold tracking-widest uppercase text-white block mb-4">
-              ART <span className="text-zinc-600">LINE</span>
+      {/* --- 7. CALL TO ACTION (Заклик до дії) --- */}
+      <section className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">
+        {/* Декоративна смужка зверху для стилю та переходу */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent"></div>
+        
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-sm">
+            Готові втілити <br />
+            <span className="text-lime-400 drop-shadow-[0_0_10px_rgba(163,230,53,0.3)]">
+              ваші ідеї в життя?
             </span>
-            <p className="text-sm text-zinc-500 max-w-xs">
-              Виготовлення рекламних конструкцій, широкоформатний друк та
-              поліграфія в Києві.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h4 className="font-bold uppercase text-white mb-4">Контакти</h4>
-            <div className="flex items-start gap-3">
-              <Phone size={18} className="text-zinc-500 mt-1" />
-              <div>
-                <p className="text-sm">+38 (050) 123 45 67</p>
-                <p className="text-[10px] uppercase text-zinc-500">
-                  Щоденно 09:00 - 20:00
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <MapPin size={18} className="text-zinc-500 mt-1" />
-              <div>
-                <p className="text-sm">м. Київ, вул. Хрещатик, 1</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Mail size={18} className="text-zinc-500 mt-1" />
-              <p className="text-sm">info@artline-design.ua</p>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-bold uppercase text-white mb-4">
-              Ми в соцмережах
-            </h4>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center cursor-pointer transition">
-                IG
-              </div>
-              <div className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center cursor-pointer transition">
-                FB
-              </div>
-            </div>
+          </h2>
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок 
+            вартості та консультацію від наших фахівців. Працюємо швидко та якісно!
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Основна кнопка */}
+            <button className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 transition transform hover:-translate-y-1 text-lg uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)] hover:shadow-[0_6px_20px_0_rgba(163,230,53,0.6)]">
+              Замовити друк
+            </button>
+            {/* Додаткова кнопка з телефоном */}
+            <button className="bg-transparent border-2 border-white/10 text-white font-medium px-10 py-4 rounded-xl hover:bg-white/5 hover:border-white/30 transition text-lg uppercase">
+              +38 (050) 123 45 67
+            </button>
           </div>
         </div>
-        <div className="container mx-auto px-6 mt-12 pt-8 border-t border-zinc-800 flex justify-between text-xs text-zinc-600">
-          <span>&copy; 2026 Art Line Design. Всі права захищені.</span>
-          <Link href="#" className="hover:text-zinc-400">
-            Політика конфіденційності
-          </Link>
-        </div>
-      </footer>
+      </section>
     </main>
   );
 }
