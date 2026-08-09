@@ -24,3 +24,58 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Анімація друку для першого рядка (з приховуванням курсора в кінці) */
+.typing-first {
+  width: 0;
+  border-right: 3px solid #a3e635; /* lime-400 */
+  animation: typing-first 1.5s steps(20) forwards;
+}
+
+@keyframes typing-first {
+  0% { width: 0; border-color: #a3e635; }
+  99% { width: 100%; border-color: #a3e635; }
+  100% { width: 100%; border-color: transparent; }
+}
+
+/* Анімація друку для другого рядка (з миготливим курсором) */
+.typing-second {
+  width: 0;
+  border-right: 3px solid #a3e635;
+  animation: typing-second 1.8s steps(20) forwards 2s, blink 0.8s step-end infinite 2s;
+}
+
+@keyframes typing-second {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: #a3e635; }
+  50% { border-color: transparent; }
+}
+
+/* Для мобільних пристроїв – прибираємо курсор і робимо текст без анімації, якщо занадто довгий */
+@media (max-width: 480px) {
+  .typing-first, .typing-second {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+    width: auto;
+  }
+}
