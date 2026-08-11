@@ -74,6 +74,7 @@ export default function Home() {
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10"></div>
+        {/* <div className="absolute inset-0 size-full opacity-90 bg-gradient-to-br from-black via-green-900 to-green-400" /> */}
 
         {/* Контент зліва */}
         <div className="container mx-auto px-6 relative z-20">

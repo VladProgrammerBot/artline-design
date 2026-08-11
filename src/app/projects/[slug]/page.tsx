@@ -1,0 +1,203 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Target, Lightbulb, Check, ArrowRight } from "lucide-react";
+import { projects } from "@/data/projects"; // шлях до ваших даних
+
+// --- Генерація статичних параметрів для SSG ---
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+// --- Компонент сторінки ---
+export default async function ProjectPage({ params }) {
+  const { slug } = await params; // Обов'язково очікуємо розпакування Promise
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return (
+      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
+        <h1 className="text-4xl">Проєкт не знайдено</h1>
+      </main>
+    );
+  }
+
+  // Інші проєкти (всі, крім поточного)
+  const otherProjects = projects.filter((p) => p.slug !== params.slug);
+
+  return (
+    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+      {/* --- 1. HERO: зображення + назва клієнта --- */}
+      <section className="relative pt-32 pb-20 min-h-[70vh] flex items-center bg-zinc-900 overflow-hidden">
+        <img
+          src="/office.webp"
+          alt="Office"
+          className="absolute inset-0 object-cover w-full h-full opacity-20"
+        />
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src={project.mainImage}
+            alt={project.title}
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
+        </div>
+        <div className="absolute inset-0 size-full opacity-20 bg-gradient-to-br from-red-500 via-green-900 to-yellow-500" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl">
+            <p className="text-lime-400 text-sm font-semibold uppercase tracking-wider mb-2">
+              Проєкт
+            </p>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white drop-shadow-lg">
+              {project.title}
+            </h1>
+            <p className="text-2xl md:text-3xl font-light text-zinc-200 mt-2 drop-shadow-md">
+              {project.client}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-6">
+              {project.services.map((service, idx) => (
+                <span
+                  key={idx}
+                  className="bg-lime-400/20 text-lime-300 px-4 py-1 rounded-full text-sm font-medium border border-lime-400/30"
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 2. TASK – SOLUTION – RESULT --- */}
+      <section className="py-20 bg-zinc-900 border-b border-zinc-800">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-zinc-800/50 p-6 rounded-xl border border-zinc-700">
+              <div className="flex items-center gap-3 mb-4">
+                <Target className="text-lime-400" size={24} />
+                <h3 className="text-xl font-bold uppercase text-white">
+                  Завдання
+                </h3>
+              </div>
+              <p className="text-zinc-300 leading-relaxed">{project.task}</p>
+            </div>
+            <div className="bg-zinc-800/50 p-6 rounded-xl border border-zinc-700">
+              <div className="flex items-center gap-3 mb-4">
+                <Lightbulb className="text-lime-400" size={24} />
+                <h3 className="text-xl font-bold uppercase text-white">
+                  Рішення
+                </h3>
+              </div>
+              <p className="text-zinc-300 leading-relaxed">
+                {project.solution}
+              </p>
+            </div>
+            <div className="bg-zinc-800/50 p-6 rounded-xl border border-zinc-700">
+              <div className="flex items-center gap-3 mb-4">
+                <Check className="text-lime-400" size={24} />
+                <h3 className="text-xl font-bold uppercase text-white">
+                  Результат
+                </h3>
+              </div>
+              <p className="text-zinc-300 leading-relaxed">{project.result}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 3. GALLERY --- */}
+      <section className="py-20 bg-zinc-950">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold uppercase mb-8 text-white">
+            Галерея
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {project.gallery.map((img, idx) => (
+              <div
+                key={idx}
+                className="relative h-64 bg-zinc-800 rounded-lg overflow-hidden group"
+              >
+                <img
+                  src={img}
+                  alt={`Фото проєкту ${idx + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- 4. OTHER PROJECTS --- */}
+      {otherProjects.length > 0 && (
+        <section className="py-20 bg-zinc-900 border-t border-zinc-800">
+          <div className="container mx-auto px-6">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold uppercase text-white">
+                Інші проєкти
+              </h2>
+              <Link
+                href="/portfolio"
+                className="text-lime-400 hover:text-lime-300 transition flex items-center gap-1"
+              >
+                Всі проєкти <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {otherProjects.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/projects/${item.slug}`}
+                  className="group bg-zinc-800 rounded-lg overflow-hidden border border-zinc-700 hover:border-lime-400 transition"
+                >
+                  <div className="h-48 bg-zinc-700 relative">
+                    <img
+                      src={item.mainImage} // можна використати головне фото як прев'ю
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition duration-500"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h4 className="font-semibold text-sm text-white group-hover:text-lime-400 transition">
+                      {item.title}
+                    </h4>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* --- 5. CONTACT (CTA) --- */}
+      <section className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-sm">
+            Готові втілити <br />
+            <span className="text-lime-400 drop-shadow-[0_0_10px_rgba(163,230,53,0.3)]">
+              ваші ідеї в життя?
+            </span>
+          </h2>
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок
+            вартості та консультацію від наших фахівців.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 transition transform hover:-translate-y-1 text-lg uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)] hover:shadow-[0_6px_20px_0_rgba(163,230,53,0.6)]">
+              Замовити друк
+            </button>
+            <button className="bg-transparent border-2 border-white/10 text-white font-medium px-10 py-4 rounded-xl hover:bg-white/5 hover:border-white/30 transition text-lg uppercase">
+              +38 (050) 123 45 67
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

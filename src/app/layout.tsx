@@ -7,12 +7,20 @@ import { Footer } from "./footer";
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  ),
   title: "ART LINE DESIGN | Широкоформатний друк, вивіски та реклама",
-  description: "Професійний широкоформатний друк, виготовлення вивісок, інтер'єрний друк та поліграфія. Швидко, якісно та з гарантією.",
-  keywords: "широкоформатний друк, вивіски, поліграфія, реклама, друк на плівці, київ, art line design",
+  description:
+    "Професійний широкоформатний друк, виготовлення вивісок, інтер'єрний друк та поліграфія. Швидко, якісно та з гарантією.",
+  keywords:
+    "широкоформатний друк, вивіски, поліграфія, реклама, друк на плівці, київ, art line design",
   openGraph: {
     title: "ART LINE DESIGN | Рекламні рішення",
-    description: "Дійсний друк, брендування та виготовлення реклами будь-якої складності.",
+    description:
+      "Дійсний друк, брендування та виготовлення реклами будь-якої складності.",
     url: "https://artline-design.ua",
     siteName: "ART LINE DESIGN",
     images: [
