@@ -1,4 +1,6 @@
 // pages/projects.js (або app/projects/page.jsx для App Router)
+import UniversalGrid from "@/components/ImagesGrid";
+import { portfolioItems } from "@/data/projects";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -114,37 +116,22 @@ export default function ProjectsPage() {
 
         {/* Сітка проектів – без фільтрів, лише статичний вивід усіх елементів */}
         <section className="py-16 bg-zinc-50 text-zinc-900">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {allProjects.map((project) => (
-                <Link
-                  key={project.id}
-                  href={`/projects/${project.id}`} // статичний маршрут (можна замінити на #)
-                  className="group bg-white rounded-xl overflow-hidden shadow-sm border border-zinc-100 hover:shadow-xl transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative h-64 bg-zinc-200 overflow-hidden">
-                    <img
-                      src={project.img}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      placeholder="blur"
-                      blurDataURL="/blur-placeholder.jpg"
-                    />
-                  </div>
-                  <div className="p-5 flex flex-col flex-grow">
-                    <h3 className="font-bold text-base md:text-lg leading-snug mb-2 group-hover:text-lime-600 transition-colors">
-                      {project.title}
-                    </h3>
-                    <span className="text-xs uppercase text-zinc-400 mt-auto pt-2 border-t border-zinc-100">
-                      {project.category}
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+  <div className="container mx-auto px-6">
+    <UniversalGrid
+      items={allProjects.map(project => ({
+        id: project.id,
+        title: project.title,
+        description: project.category,
+        img: "/office.webp",
+        href: `/projects/${project.id}`
+      }))}
+      defaultHref="/projects/default"
+      imageAltPrefix="Portfolio"
+      columns={3}
+    />
+  </div>
+</section>
+
 
         {/* CTA – статичний блок із посиланнями замість кнопок */}
         <section className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">

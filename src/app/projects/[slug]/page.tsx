@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Target, Lightbulb, Check, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects"; // шлях до ваших даних
+import Gallery from "@/components/Gallery";
+import UniversalGrid from "@/components/ImagesGrid";
 
 // --- Генерація статичних параметрів для SSG ---
 export async function generateStaticParams() {
@@ -114,21 +116,11 @@ export default async function ProjectPage({ params }) {
           <h2 className="text-3xl font-bold uppercase mb-8 text-white">
             Галерея
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {project.gallery.map((img, idx) => (
-              <div
-                key={idx}
-                className="relative h-64 bg-zinc-800 rounded-lg overflow-hidden group"
-              >
-                <img
-                  src={img}
-                  alt={`Фото проєкту ${idx + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
+          <Gallery
+            images={project.gallery}
+            title="Наші роботи"
+            className="my-8"
+          />
         </div>
       </section>
 
@@ -141,35 +133,18 @@ export default async function ProjectPage({ params }) {
                 Інші проєкти
               </h2>
               <Link
-                href="/portfolio"
+                href="/projects"
                 className="text-lime-400 hover:text-lime-300 transition flex items-center gap-1"
               >
                 Всі проєкти <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {otherProjects.map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/projects/${item.slug}`}
-                  className="group bg-zinc-800 rounded-lg overflow-hidden border border-zinc-700 hover:border-lime-400 transition"
-                >
-                  <div className="h-48 bg-zinc-700 relative">
-                    <img
-                      src={item.mainImage} // можна використати головне фото як прев'ю
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="font-semibold text-sm text-white group-hover:text-lime-400 transition">
-                      {item.title}
-                    </h4>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <UniversalGrid
+              items={projects}
+              defaultHref="/projects/default"
+              imageAltPrefix="Portfolio"
+              columns={3}
+            />
           </div>
         </section>
       )}

@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ExternalLink,
 } from "lucide-react";
+import Gallery from "@/components/Gallery";
 
 // ========== ДАНІ (можна винести в окремий файл /lib/services.ts) ==========
 const servicesData = [
@@ -227,44 +228,28 @@ export default async function ServicePage({
           </h2>
 
           {/* Pinterest-style masonry grid */}
-          <div className="columns-2 md:columns-3 g:columns-4 gap-4 space-y-4">
-            {Array.from({ length: 9 }, (_, i) => {
-              // Різна висота для асиметричного ефекту
-              const heights = [
-                "aspect-auto",
-                "aspect-[3/4]",
-                "aspect-[4/3]",
-                "aspect-[2/3]",
-                "aspect-[3/2]",
-              ];
-              const randomHeight = heights[i % heights.length];
-
-              return (
-                <div
-                  key={i}
-                  className={`${randomHeight} relative break-inside-avoid mb-4 bg-zinc-200 rounded-lg overflow-hidden group cursor-pointer`}
-                >
-                  <img
-                    src="/office.webp"
-                    alt={`Приклад роботи ${i + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    style={{
-                      // Додатковий ефект асиметрії через різний обріз
-                      objectPosition: `${["center", "top", "bottom", "left", "right"][i % 5]}`,
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-
-                  {/* Прихований текст для SEO */}
-                  <span className="sr-only">
-                    Зображення прикладу робіт компанії, інтер'єр офісу
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+          <Gallery
+            images={[
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+              "/office.webp",
+            ]}
+            title="Наші роботи"
+            className="my-8"
+          />
         </div>
       </section>
 

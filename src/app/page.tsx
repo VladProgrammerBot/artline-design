@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import UniversalGrid from "@/components/ImagesGrid";
-import { clients, portfolioItems, services } from "@/data/projects";
+import { clients, projects, services } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "ART LINE Design | Рекламний друк та брендування в Україні",
@@ -112,7 +112,7 @@ export default function Home() {
           </div>
 
           <UniversalGrid
-            items={portfolioItems}
+            items={projects}
             defaultHref="/projects/default"
             imageAltPrefix="Portfolio"
             columns={3}
@@ -206,7 +206,7 @@ export default function Home() {
               {[...clients, ...clients].map((client, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 mx-10 w-36 h-16 flex items-center justify-center"
+                  className="flex-shrink-0 mx-10 w-36 cursor-pointer hover:scale-110 duration-150 h-16 flex items-center justify-center"
                 >
                   <img
                     src="/next.svg"
@@ -223,7 +223,10 @@ export default function Home() {
       </section>
 
       {/* --- 6. CALL TO ACTION --- */}
-      <section id="contact" className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">
+      <section
+        id="contact"
+        className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden"
+      >
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent"></div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
@@ -232,12 +235,15 @@ export default function Home() {
             <span className="text-lime-400">ваші ідеї в життя?</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Зв{"'"}яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок
-            вартості та консультацію від наших фахівців. Працюємо швидко та
-            якісно!
+            Зв{"'"}яжіться з нами прямо зараз, щоб отримати безкоштовний
+            розрахунок вартості та консультацію від наших фахівців. Працюємо
+            швидко та якісно!
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contacts" className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 hover:scale-105 transition-all uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)]">
+            <Link
+              href="/contacts"
+              className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 hover:scale-105 transition-all uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)]"
+            >
               Зв{"'"}язатися з нами
             </Link>
 

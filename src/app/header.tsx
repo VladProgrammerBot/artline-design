@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export const Header = () => {
   const navItems = [
-    { title: "Послуги", href: "#services" },
-    { title: "Проєкти", href: "#projects" },
-    { title: "Про нас", href: "#about" },
-    { title: "Клієнти", href: "#clients" },
-    { title: "Зв'язатися", href: "#contact" },
+    { title: "Послуги", href: "/#services" },
+    { title: "Проєкти", href: "/#projects" },
+    { title: "Про нас", href: "/#about" },
+    { title: "Клієнти", href: "/#clients" },
+    { title: "Зв'язатися", href: "/#contact" },
   ];
 
   return (
@@ -14,9 +14,9 @@ export const Header = () => {
       <div className="container  mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex flex-col">
           <span className="text-2xl font-bold tracking-widest uppercase text-white drop-shadow-md">
-            ART <span className="text-zinc-400">LINE</span>
+            ART <span className="text-lime-400">LINE</span>
           </span>
-          <span className="text-[10px] tracking-widest uppercase text-zinc-400 -mt-1 drop-shadow-sm">
+          <span className="text-[10px] tracking-widest uppercase text-lime-500 -mt-1 drop-shadow-sm">
             Design
           </span>
         </Link>
