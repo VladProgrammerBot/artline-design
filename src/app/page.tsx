@@ -165,7 +165,6 @@ export default function Home() {
               <img
                 src="/office.webp"
                 alt="Наше обладнання"
-                fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover"
               />
@@ -178,7 +177,6 @@ export default function Home() {
               <img
                 src="/office.webp"
                 alt="Процес друку"
-                fill
                 sizes="(max-width: 1024px) 50vw, 25vw"
                 className="object-cover"
               />

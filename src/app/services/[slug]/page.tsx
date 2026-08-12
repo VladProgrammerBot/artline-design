@@ -164,8 +164,6 @@ export default async function ServicePage({
         <img
           src={service.image}
           alt={service.title}
-          fill
-          priority
           sizes="100vw"
           className="object-cover opacity-80"
         />

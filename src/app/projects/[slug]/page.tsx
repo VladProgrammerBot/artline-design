@@ -13,7 +13,11 @@ export async function generateStaticParams() {
 }
 
 // --- Компонент сторінки ---
-export default async function ProjectPage({ params }) {
+export default async function ProjectPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = await params; // Обов'язково очікуємо розпакування Promise
   const project = projects.find((p) => p.slug === slug);
 
@@ -41,9 +45,7 @@ export default async function ProjectPage({ params }) {
           <img
             src={project.mainImage}
             alt={project.title}
-            fill
             className="object-cover opacity-60"
-            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent"></div>
         </div>

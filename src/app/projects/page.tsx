@@ -1,6 +1,5 @@
 // pages/projects.js (або app/projects/page.jsx для App Router)
 import UniversalGrid from "@/components/ImagesGrid";
-import { portfolioItems } from "@/data/projects";
 import Head from "next/head";
 import Link from "next/link";
 
