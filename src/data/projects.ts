@@ -37,4 +37,73 @@ export const projects = [
   // ... додайте інші проєкти
 ];
 
-// Дані для блоку "Інші проєкти" – можна взяти всі проєкти, крім поточного
+export const services = [
+  {
+    id: 1,
+    title: "Широкоформатний друк",
+    img: "/office.webp",
+    href: "/services/dtf-druk",
+  },
+  { id: 2, title: "ДТФ друк", img: "/office.webp", href: "/services/dtf-druk" },
+  { id: 3, title: "Дизайн", img: "/office.webp", href: "/services/dtf-druk" },
+  { id: 4, title: "Вивіски", img: "/office.webp", href: "/services/dtf-druk" },
+  {
+    id: 5,
+    title: "Брендування авто",
+    img: "/office.webp",
+    href: "/services/dtf-druk",
+  },
+  { id: 6, title: "Друк на одязі", img: "/office.webp", href: "/services/dtf-druk" },
+  { id: 7, title: "Поліграфія", img: "/office.webp", href: "/services/dtf-druk" },
+];
+
+export const portfolioItems = [
+  {
+    id: 1,
+    title: "Брендування офісу",
+    img: "/office.webp",
+    href: "/projects/branding-office",
+  },
+  {
+    id: 2,
+    title: "Вивіска для магазину",
+    img: "/office.webp",
+    href: "/projects/signage",
+  },
+  {
+    id: 3,
+    title: "Широкоформатний банер",
+    img: "/office.webp",
+    href: "/projects/billboard",
+  },
+  {
+    id: 4,
+    title: "Друк футболок",
+    img: "/office.webp",
+    href: "/projects/t-shirts",
+  },
+  {
+    id: 5,
+    title: "Інтер'єрний друк",
+    img: "/office.webp",
+    href: "/projects/interior-design",
+  },
+  {
+    id: 6,
+    title: "Реклама на транспорті",
+    img: "/office.webp",
+    href: "/projects/transport-advertising",
+  },
+];
+
+export const clients = [
+  "ROSHEN",
+  "Эльдорадо",
+  "НОВА ПОШТА",
+  "eva",
+  "VARUS",
+  "TERWIN",
+  "KARCHER",
+  "INTERTOP",
+  "pepsi",
+];
