@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import UniversalGrid from "@/components/ImagesGrid";
 import { clients, projects, services } from "@/data/projects";
+import { ArrowRight } from "lucide-react";
+import { BtnShowMore } from "@/components/BtnShowMore";
 
 export const metadata: Metadata = {
   title: "ART LINE Design | Рекламний друк та брендування в Україні",
@@ -118,71 +120,105 @@ export default function Home() {
             columns={3}
           />
         </div>
+
+        {/* Кнопка "Переглянути всі проєкти" з Lucide іконкою */}
+        <div className="flex justify-center mt-14">
+          <BtnShowMore href="/projects" title="Переглянути всі проєкти" />
+        </div>
+
+        {/* Декоративна лінія */}
+        <div className="relative flex justify-center mt-4" aria-hidden="true">
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent"></div>
+        </div>
       </section>
 
       {/* --- 4. ABOUT US & STATS --- */}
-      <section id="about" className="py-20 bg-zinc-900 text-white">
-        <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-12 items-center">
-          <div className="lg:w-1/2">
-            <span className="text-lime-400 text-xs font-semibold uppercase tracking-[0.2em]">
-              Про нас
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6 text-white">
-              Хто ми такі
-            </h2>
-            <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-8">
-              ART LINE Design – це команда професіоналів у сфері рекламного
-              друку та брендування. Ми пропонуємо повний цикл послуг: від
-              дизайну до виготовлення.
-            </p>
-            <div className="flex flex-wrap gap-8">
-              <div>
-                <span className="block text-4xl font-bold text-white">10+</span>
-                <span className="text-xs uppercase tracking-wider text-zinc-500">
-                  років досвіду
+      <section
+        id="about"
+        className="py-20 bg-zinc-900 text-white overflow-hidden"
+      >
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
+            {/* Ліва частина - текст */}
+            <div className="lg:w-1/2 space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-400/10 border border-lime-400/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-lime-400"></span>
+                <span className="text-lime-400 text-xs font-semibold uppercase tracking-[0.2em]">
+                  Про нас
                 </span>
               </div>
-              <div>
-                <span className="block text-4xl font-bold text-white">
-                  500+
+
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                Хто ми такі
+                <span className="block text-lime-400 mt-1">
+                  ART LINE Design
                 </span>
-                <span className="text-xs uppercase tracking-wider text-zinc-500">
-                  замовлень
-                </span>
+              </h2>
+
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl">
+                Ми — команда професіоналів, які перетворюють ідеї на візуальні
+                рішення. Повний цикл послуг: від дизайн-концепції до якісного
+                виготовлення рекламної продукції.
+              </p>
+
+              <div className="flex flex-wrap gap-10 pt-4">
+                <div>
+                  <span className="block text-4xl md:text-5xl font-bold text-white">
+                    10+
+                  </span>
+                  <span className="text-xs uppercase tracking-wider text-zinc-500">
+                    років досвіду
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-4xl md:text-5xl font-bold text-white">
+                    500+
+                  </span>
+                  <span className="text-xs uppercase tracking-wider text-zinc-500">
+                    реалізованих проєктів
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-4xl md:text-5xl font-bold text-white">
+                    98%
+                  </span>
+                  <span className="text-xs uppercase tracking-wider text-zinc-500">
+                    задоволених клієнтів
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="block text-4xl font-bold text-white">
-                  200+
-                </span>
-                <span className="text-xs uppercase tracking-wider text-zinc-500">
-                  постійних клієнтів
-                </span>
+
+              <div className="pt-4">
+                <BtnShowMore href="/about" title="Дізнатися більше" />
               </div>
             </div>
-          </div>
-          <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-            <div className="relative h-56 rounded-2xl overflow-hidden bg-zinc-800">
-              <img
-                src="/office.webp"
-                alt="Наше обладнання"
-                sizes="(max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute bottom-4 left-4 text-white font-medium">
-                Наше обладнання
+
+            {/* Зображення без анімацій та декорацій */}
+            <div className="w-full -full lg:w-1/2 relative min-h-[400px] md:min-h-[500px]">
+              {/* Перше зображення */}
+              <div className="absolute -rotate-5 top-0 left-0 w-[70%] h-[320px] md:h-[380px] rounded-2xl overflow-hidden bg-zinc-800 shadow-2xl shadow-black/30">
+                <img
+                  src="/office.webp"
+                  alt="Наше обладнання для друку"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="380"
+                />
               </div>
-            </div>
-            <div className="relative h-56 rounded-2xl overflow-hidden bg-zinc-800">
-              <img
-                src="/office.webp"
-                alt="Процес друку"
-                sizes="(max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute bottom-4 left-4 text-white font-medium">
-                Процес друку
+
+              {/* Друге зображення */}
+              <div className="absolute rotate-5 bottom-0 right-0 w-[65%] h-[320px] md:h-[380px] rounded-2xl overflow-hidden bg-zinc-800 shadow-2xl shadow-black/30">
+                <img
+                  src="/office.webp"
+                  alt="Процес виготовлення реклами"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="500"
+                  height="380"
+                />
               </div>
             </div>
           </div>
