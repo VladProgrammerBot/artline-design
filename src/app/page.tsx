@@ -22,14 +22,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main className="min-h-screen g-zinc-950 text-zinc-100">
       {/* --- 1. HERO --- */}
-      <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center bg-zinc-900 overflow-hidden">
+      <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center g-zinc-900 overflow-hidden">
         <video
           autoPlay
           muted
           loop
-          className="absolute inset-0 w-full h-full object-cover opacity-50 z-0"
+          className="fixed inset-0 w-full h-full object-cover opacity-50 -z-10"
         >
           <source src="/herovideo3.mp4" type="video/mp4" />
           Your browser does not support the video tag.

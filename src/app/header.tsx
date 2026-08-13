@@ -5,8 +5,7 @@ export const Header = () => {
     { title: "Послуги", href: "/#services" },
     { title: "Проєкти", href: "/#projects" },
     { title: "Про нас", href: "/#about" },
-    { title: "Клієнти", href: "/#clients" },
-    { title: "Зв'язатися", href: "/#contact" },
+    { title: "Контакти", href: "/#contact" },
   ];
 
   return (
