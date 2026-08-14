@@ -232,7 +232,7 @@ export default function Home() {
       >
         <div className="container mx-auto px-6">
           <h2 className="text-xl font-bold uppercase mb-10 text-center text-zinc-400 tracking-widest">
-            Наші клієнти
+            Нам довіряють
           </h2>
 
           <div className="relative w-full overflow-hidden">
