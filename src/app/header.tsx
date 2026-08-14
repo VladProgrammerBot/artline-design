@@ -21,14 +21,21 @@ export const Header = () => {
         </Link>
         <nav className="hidden drop-shadow-lg rop-shadow-black md:flex items-center space-x-8 text-sm uppercase tracking-wide text-zinc-200">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-lime-400 transition">
+            <Link
+              key={item.href}
+              href={item.href}
+              className="hover:text-lime-400 transition"
+            >
               {item.title}
             </Link>
           ))}
         </nav>
-        {/* <Link href="/login" className="bg-lime-400 text-black font-semibold px-6 py-2 rounded hover:bg-lime-500 transition text-sm uppercase shadow-lg">
+        <Link
+          href="/login"
+          className="border-2 border-lime-400 text-lime-400 font-semibold px-6 py-2 hover:bg-lime-400 hover:text-black transition text-sm uppercase"
+        >
           Увійти
-        </Link> */}
+        </Link>
       </div>
     </header>
   );

@@ -4,6 +4,17 @@ import UniversalGrid from "@/components/ImagesGrid";
 import { clients, projects, services } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 import { BtnShowMore } from "@/components/BtnShowMore";
+import {
+  // ArrowRight,
+  Clock,
+  FileText,
+  Calculator,
+  Shield,
+  // Facebook,
+  // Instagram,
+  // Linkedin,
+  Send,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "ART LINE Design | Рекламний друк та брендування в Україні",
@@ -26,8 +37,8 @@ export default function Home() {
   return (
     <main className="min-h-screen g-zinc-950 text-zinc-100">
       {/* --- 1. HERO --- */}
-      <section className="relative pt-32 pb-20 min-h-[90vh] flex items-center g-zinc-900 overflow-hidden">
-        <video
+      <section className="relative pt-40 pb-20 min-h-[100vh] flex items-center g-zinc-900 overflow-hidden">
+        {/* <video
           autoPlay
           muted
           loop
@@ -35,21 +46,23 @@ export default function Home() {
         >
           <source src="/herovideo3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
+        <img
+          src="office.webp"
+          className="fixed inset-0 w-full h-full object-cover opacity-50 -z-10"
+          alt=""
+        />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10"></div>
 
         <div className="container mx-auto px-6 relative z-20">
           <div className="max-w-3xl">
-            <div className="inline-block mb-6 px-4 py-1 border border-lime-400/30 rounded-full text-lime-400 text-xs uppercase tracking-widest">
-              ART LINE Design
-            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 text-white drop-shadow-lg">
-              <span className="text-lime-400 inline-block overflow-hidden whitespace-nowrap typing-first">
+              <span className="text-lime-400 inline-block overflow-hidden whitespace-nowrap yping-first">
                 РЕКЛАМНІ РІШЕННЯ
               </span>
               <br />
-              <span className="text-white inline-block overflow-hidden whitespace-nowrap typing-second">
+              <span className="text-white inline-block overflow-hidden whitespace-nowrap yping-second">
                 ЩО ПРАЦЮЮТЬ
               </span>
             </h1>
@@ -62,15 +75,9 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="#services"
-                className="bg-lime-400 text-black font-bold px-8 py-3 rounded-xl hover:bg-lime-500 hover:scale-105 transition-all uppercase"
+                className="bg-lime-400 text-black font-bold px-8 py-3 hover:bg-lime-500 hover:scale-105 transition-all uppercase"
               >
-                Наші послуги
-              </Link>
-              <Link
-                href="/projects"
-                className="bg-transparent border border-white/30 text-white px-8 py-3 rounded-xl hover:bg-white/10 hover:border-white/50 transition-all uppercase"
-              >
-                Переглянути проєкти
+                Дивитись проєкти
               </Link>
             </div>
           </div>
@@ -78,26 +85,94 @@ export default function Home() {
       </section>
 
       {/* --- 2. SERVICES GRID --- */}
+      {/* --- 2. SERVICES SECTION --- */}
       <section
         id="services"
-        className="py-20 bg-zinc-950 border-b border-zinc-800/50"
+        className="py-20 bg-gradient-to-b from-zinc-950 to-zinc-900 border-y border-zinc-800/50"
       >
         <div className="container mx-auto px-6">
-          <div className="text-center mb-14">
-            <span className="text-lime-400 text-xs font-semibold uppercase tracking-[0.2em]">
+          <div className="text-center mb-16">
+            <span className="text-lime-400 text-xs font-semibold uppercase tracking-[0.2em] bg-lime-400/10 px-4 py-2 border border-lime-400/20">
               Наші послуги
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3">
-              Що ми пропонуємо
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-6">
+              Комплексні рішення для <br />
+              <span className="text-lime-400">вашого бізнесу</span>
             </h2>
+            <p className="text-zinc-400 text-lg max-w-2xl mx-auto mt-4">
+              Від створення дизайну до готового продукту — ми забезпечуємо
+              повний цикл виробництва рекламної продукції будь-якої складності
+            </p>
           </div>
 
-          <UniversalGrid
-            items={services}
-            defaultHref="/projects/default"
-            imageAltPrefix="Portfolio"
-            columns={4}
-          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ap-6">
+            {services.map((service, index) => (
+              <Link
+                key={service.id}
+                href={service.href}
+                className="group relative overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-lime-400/10 order border-zinc-700/50 hover:border-lime-400/30"
+              >
+                <div className="relative h-full min-h-[300px] overflow-hidden">
+                  <img
+                    src={service.img}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+                  {/* Номер послуги */}
+                  <span className="absolute top-4 right-4 text-lime-400 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 px-3 py-1 backdrop-blur-sm border border-lime-400/20">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Контент поверх зображення */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    {/* Іконка-індикатор */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-6 h-6 bg-lime-400 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
+                        <svg
+                          className="w-3 h-3 text-black"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M5 12h14M12 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white group-hover:text-lime-400 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-zinc-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      Дізнатись більше →
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Додатковий заклик до дії */}
+          <div className="flex justify-center mt-12">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-zinc-400 hover:text-lime-400 transition-colors duration-300 font-medium border-b border-zinc-700 hover:border-lime-400 pb-1 group"
+            >
+              Переглянути всі послуги
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -141,8 +216,8 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
             {/* Ліва частина - текст */}
             <div className="lg:w-1/2 space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-400/10 border border-lime-400/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-lime-400"></span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-400/10 border border-lime-400/20">
+                <span className="w-1.5 h-1.5 bg-lime-400"></span>
                 <span className="text-lime-400 text-xs font-semibold uppercase tracking-[0.2em]">
                   Про нас
                 </span>
@@ -257,33 +332,52 @@ export default function Home() {
       </section>
 
       {/* --- 6. CALL TO ACTION --- */}
+      {/* --- 6. CALL TO ACTION --- */}
       <section
         id="contact"
-        className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden"
+        className="py-24 bg-zinc-950 relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent"></div>
+        {/* Декоративні елементи фону */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-lime-400/10 blur-3xl" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-lime-400/5 blur-2xl" />
+          <div className="absolute bottom-0 left-0 w-[250px] h-[250px] rounded-full bg-lime-400/5 blur-2xl" />
+        </div>
 
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Готові втілити <br />
-            <span className="text-lime-400">ваші ідеї в життя?</span>
+        {/* Верхня декоративна лінія */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent" />
+
+        {/* Нижня декоративна лінія */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Головний заголовок */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 leading-[1.1]">
+            Готові втілити
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-lime-300 to-lime-400">
+              ваші ідеї в життя?
+            </span>
           </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Зв{"'"}яжіться з нами прямо зараз, щоб отримати безкоштовний
-            розрахунок вартості та консультацію від наших фахівців. Працюємо
-            швидко та якісно!
+
+          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto text-center mb-14 leading-relaxed">
+            Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок
+            вартості та консультацію від наших фахівців
           </p>
+
+          {/* Переваги у вигляді карток */}
+          
+
+          {/* Кнопка дії */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contacts"
-              className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 hover:scale-105 transition-all uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)]"
+              className="group relative inline-flex items-center gap-3 bg-lime-400 text-black font-bold px-10 py-4 transition-all duration-300 hover:bg-lime-500 hover:scale-105 hover:shadow-2xl hover:shadow-lime-400/30 uppercase tracking-wide overflow-hidden text-sm"
             >
-              Зв{"'"}язатися з нами
-            </Link>
+              <span className="relative z-10">Зв'язатися з нами</span>
+              <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
 
-            {/* <Link href="/contact" className="bg-transparent border-2 border-white/10 text-white font-medium px-10 py-4 rounded-xl hover:bg-white/5 hover:border-white/30 transition-all uppercase">
-              Зв{"'"}язатися з нами
-            </Link> */}
+              {/* Ефект залиття */}
+            </Link>
           </div>
         </div>
       </section>
