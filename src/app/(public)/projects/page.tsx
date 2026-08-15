@@ -2,6 +2,8 @@
 import UniversalGrid from "@/components/ImagesGrid";
 import Head from "next/head";
 import Link from "next/link";
+import { projects } from "@/data/projects"; // шлях до ваших даних
+import ContactCTA from "@/components/CallToAction";
 
 // Дані всіх проектів – залишаються статичними
 const allProjects = [
@@ -83,7 +85,9 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>Наші проекти | ART LINE Design — Портфоліо рекламного друку</title>
+        <title>
+          Наші проекти | ART LINE Design — Портфоліо рекламного друку
+        </title>
         <meta
           name="description"
           content="Перегляньте виконані проекти з широкоформатного друку, брендування, вивісок та поліграфії. Якісні фото робіт компанії ART LINE Design."
@@ -107,59 +111,32 @@ export default function ProjectsPage() {
               Наші <span className="text-lime-400">проекти</span>
             </h1>
             <p className="text-lg md:text-xl text-zinc-300 max-w-2xl">
-              Роботи, якими ми пишаємось. Від ідеї до готового продукту — кожен проект
-              виконаний із увагою до деталей.
+              Роботи, якими ми пишаємось. Від ідеї до готового продукту — кожен
+              проект виконаний із увагою до деталей.
             </p>
           </div>
         </section>
 
         {/* Сітка проектів – без фільтрів, лише статичний вивід усіх елементів */}
         <section className="py-16 bg-zinc-50 text-zinc-900">
-  <div className="container mx-auto px-6">
-    <UniversalGrid
-      items={allProjects.map(project => ({
-        id: project.id,
-        title: project.title,
-        description: project.category,
-        img: "/office.webp",
-        href: `/projects/${project.id}`
-      }))}
-      defaultHref="/projects/default"
-      imageAltPrefix="Portfolio"
-      columns={3}
-    />
-  </div>
-</section>
-
-
-        {/* CTA – статичний блок із посиланнями замість кнопок */}
-        <section className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent" />
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Сподобався стиль? <br />
-              <span className="text-lime-400">Замовте свій проект</span>
-            </h2>
-            <p className="text-zinc-400 max-w-xl mx-auto mb-8">
-              Ми втілимо вашу ідею в життя — від дизайну до готового виробу.
-              Зв’яжіться для консультації.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/contact"
-                className="bg-lime-400 text-black font-bold px-8 py-3 rounded-xl hover:bg-lime-500 transition uppercase shadow-lg shadow-lime-400/20 inline-block"
-              >
-                Розрахувати вартість
-              </Link>
-              <a
-                href="tel:+380501234567"
-                className="bg-transparent border border-white/20 text-white px-8 py-3 rounded-xl hover:bg-white/5 transition uppercase inline-block"
-              >
-                +38 (050) 123 45 67
-              </a>
-            </div>
+          <div className="container mx-auto px-6">
+            <UniversalGrid
+              items={projects}
+              defaultHref="/projects/default"
+              imageAltPrefix="Portfolio"
+              columns={3}
+            />
           </div>
         </section>
+
+        {/* CTA – статичний блок із посиланнями замість кнопок */}
+        <ContactCTA
+          title="Сподобався стиль?"
+          titleHighlight="Замовте свій проект"
+          description="Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок вартості та консультацію від наших фахівців. Працюємо швидко та якісно!"
+          buttonText="Зв'язатися з нами"
+          buttonHref="/contacts"
+        />
       </main>
     </>
   );

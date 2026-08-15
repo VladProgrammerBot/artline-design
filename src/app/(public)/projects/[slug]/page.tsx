@@ -4,6 +4,7 @@ import { Target, Lightbulb, Check, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects"; // шлях до ваших даних
 import Gallery from "@/components/Gallery";
 import UniversalGrid from "@/components/ImagesGrid";
+import ContactCTA from "@/components/CallToAction";
 
 // --- Генерація статичних параметрів для SSG ---
 export async function generateStaticParams() {
@@ -33,9 +34,9 @@ export default async function ProjectPage({
   const otherProjects = projects.filter((p) => p.slug !== params.slug);
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-zinc-100">
+    <main className="min-h-screen g-zinc-950 text-zinc-100">
       {/* --- 1. HERO: зображення + назва клієнта --- */}
-      <section className="relative pt-32 pb-20 min-h-[70vh] flex items-center bg-zinc-900 overflow-hidden">
+      <section className="relative pt-32 pb-20 min-h-[70vh] flex items-center g-zinc-900 overflow-hidden">
         <img
           src="/office.webp"
           alt="Office"
@@ -113,9 +114,9 @@ export default async function ProjectPage({
       </section>
 
       {/* --- 3. GALLERY --- */}
-      <section className="py-20 bg-zinc-950">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold uppercase mb-8 text-white">
+          <h2 className="text-3xl font-bold uppercase mb-8 text-black">
             Галерея
           </h2>
           <Gallery
@@ -152,29 +153,13 @@ export default async function ProjectPage({
       )}
 
       {/* --- 5. CONTACT (CTA) --- */}
-      <section className="py-24 bg-zinc-950 border-t border-zinc-800 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent"></div>
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-sm">
-            Готові втілити <br />
-            <span className="text-lime-400 drop-shadow-[0_0_10px_rgba(163,230,53,0.3)]">
-              ваші ідеї в життя?
-            </span>
-          </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок
-            вартості та консультацію від наших фахівців.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="bg-lime-400 text-black font-bold px-10 py-4 rounded-xl hover:bg-lime-500 transition transform hover:-translate-y-1 text-lg uppercase shadow-[0_4px_14px_0_rgba(163,230,53,0.4)] hover:shadow-[0_6px_20px_0_rgba(163,230,53,0.6)]">
-              Замовити друк
-            </button>
-            <button className="bg-transparent border-2 border-white/10 text-white font-medium px-10 py-4 rounded-xl hover:bg-white/5 hover:border-white/30 transition text-lg uppercase">
-              +38 (050) 123 45 67
-            </button>
-          </div>
-        </div>
-      </section>
+      <ContactCTA
+        title="Готові втілити"
+        titleHighlight="ваші ідеї в життя?"
+        description="Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок вартості та консультацію від наших фахівців. Працюємо швидко та якісно!"
+        buttonText="Зв'язатися з нами"
+        buttonHref="/contacts"
+      />
     </main>
   );
 }

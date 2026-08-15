@@ -23,7 +23,7 @@ const Gallery: React.FC<GalleryProps> = ({
   const objectPositions = ["center", "top", "bottom", "left", "right"];
 
   return (
-    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+    <div className="columns-2 md:columns-3 lg:columns-4 gap-2 space-y-4">
       {images.map((image, index) => {
         const randomHeight = heights[index % heights.length];
         const position = objectPositions[index % objectPositions.length];
@@ -31,7 +31,7 @@ const Gallery: React.FC<GalleryProps> = ({
         return (
           <div
             key={index}
-            className={`${randomHeight} relative break-inside-avoid mb-4 bg-zinc-200 rounded-lg overflow-hidden group cursor-pointer`}
+            className={`${randomHeight} relative break-inside-avoid mb-2 bg-zinc-200 overflow-hidden group cursor-pointer`}
           >
             <img
               src={image}

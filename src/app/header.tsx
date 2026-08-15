@@ -31,7 +31,7 @@ export const Header = () => {
           ))}
         </nav>
         <Link
-          href="/login"
+          href="/signin"
           className="border-2 border-lime-400 text-lime-400 font-semibold px-6 py-2 hover:bg-lime-400 hover:text-black transition text-sm uppercase"
         >
           Увійти

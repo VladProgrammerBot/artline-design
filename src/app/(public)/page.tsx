@@ -4,17 +4,7 @@ import UniversalGrid from "@/components/ImagesGrid";
 import { clients, projects, services } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 import { BtnShowMore } from "@/components/BtnShowMore";
-import {
-  // ArrowRight,
-  Clock,
-  FileText,
-  Calculator,
-  Shield,
-  // Facebook,
-  // Instagram,
-  // Linkedin,
-  Send,
-} from "lucide-react";
+import ContactCTA from "@/components/CallToAction";
 
 export const metadata: Metadata = {
   title: "ART LINE Design | Рекламний друк та брендування в Україні",
@@ -85,7 +75,6 @@ export default function Home() {
       </section>
 
       {/* --- 2. SERVICES GRID --- */}
-      {/* --- 2. SERVICES SECTION --- */}
       <section
         id="services"
         className="py-20 bg-gradient-to-b from-zinc-950 to-zinc-900 border-y border-zinc-800/50"
@@ -110,7 +99,7 @@ export default function Home() {
               <Link
                 key={service.id}
                 href={service.href}
-                className="group relative overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-lime-400/10 order border-zinc-700/50 hover:border-lime-400/30"
+                className="group relative overflow-hidden bg-zinc-800/50 hover:bg-zinc-800 transition-all duration-500 over:-translate-y-2 hover:shadow-2xl hover:shadow-lime-400/10 order border-zinc-700/50 hover:border-lime-400/30"
               >
                 <div className="relative h-full min-h-[300px] overflow-hidden">
                   <img
@@ -332,55 +321,13 @@ export default function Home() {
       </section>
 
       {/* --- 6. CALL TO ACTION --- */}
-      {/* --- 6. CALL TO ACTION --- */}
-      <section
-        id="contact"
-        className="py-24 bg-zinc-950 relative overflow-hidden"
-      >
-        {/* Декоративні елементи фону */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-lime-400/10 blur-3xl" />
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-lime-400/5 blur-2xl" />
-          <div className="absolute bottom-0 left-0 w-[250px] h-[250px] rounded-full bg-lime-400/5 blur-2xl" />
-        </div>
-
-        {/* Верхня декоративна лінія */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/50 to-transparent" />
-
-        {/* Нижня декоративна лінія */}
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime-400/30 to-transparent" />
-
-        <div className="container mx-auto px-6 relative z-10">
-          {/* Головний заголовок */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 leading-[1.1]">
-            Готові втілити
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-lime-300 to-lime-400">
-              ваші ідеї в життя?
-            </span>
-          </h2>
-
-          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto text-center mb-14 leading-relaxed">
-            Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок
-            вартості та консультацію від наших фахівців
-          </p>
-
-          {/* Переваги у вигляді карток */}
-          
-
-          {/* Кнопка дії */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contacts"
-              className="group relative inline-flex items-center gap-3 bg-lime-400 text-black font-bold px-10 py-4 transition-all duration-300 hover:bg-lime-500 hover:scale-105 hover:shadow-2xl hover:shadow-lime-400/30 uppercase tracking-wide overflow-hidden text-sm"
-            >
-              <span className="relative z-10">Зв'язатися з нами</span>
-              <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-
-              {/* Ефект залиття */}
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ContactCTA
+        title="Готові втілити"
+        titleHighlight="ваші ідеї в життя?"
+        description="Зв'яжіться з нами прямо зараз, щоб отримати безкоштовний розрахунок вартості та консультацію від наших фахівців. Працюємо швидко та якісно!"
+        buttonText="Зв'язатися з нами"
+        buttonHref="/contacts"
+      />
     </main>
   );
 }
