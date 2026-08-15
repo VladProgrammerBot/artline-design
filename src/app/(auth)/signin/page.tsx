@@ -4,14 +4,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
 import { ArrowRight, Mail, Lock, User, AlertCircle } from "lucide-react";
-
-// Ініціалізація Supabase (краще винести в окремий файл)
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-);
+import supabase from "@/app/utils/supabase"; // Імпортуємо Supabase клієнт з utils
 
 export default function LoginPage() {
   const router = useRouter();
@@ -37,7 +31,7 @@ export default function LoginPage() {
       }
 
       // Успішний вхід - редірект на дашборд або головну
-      router.push("/dashboard");
+      router.push("/");
       router.refresh();
     } catch (err: any) {
       setError(err.message || "Помилка входу. Спробуйте ще раз.");
@@ -257,7 +251,7 @@ export default function LoginPage() {
             <p className="text-sm text-zinc-400">
               Немає акаунту?{" "}
               <Link
-                href="/register"
+                href="/signup"
                 className="font-medium text-lime-400 hover:text-lime-300 transition-colors duration-300"
               >
                 Зареєструватися
